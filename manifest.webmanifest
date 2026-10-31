@@ -1,0 +1,9 @@
+{
+  "name": "TAGLIO — Prenota il tuo appuntamento",
+  "short_name": "TAGLIO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F5",
+  "theme_color": "#FAF8F5",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
