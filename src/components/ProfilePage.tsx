@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { COLORS, RADIUS, SHADOW, SAFE } from '../config/theme';
+import { COLORS, HEADING, RADIUS, SHADOW, SAFE } from '../config/theme';
 import { SALON } from '../config/salon';
 import { getStaff } from '../data/staff';
 import { downloadICS, formatLongDate, formatPrice, isUpcoming, mapsUrl, servicesFromIds, type Booking } from '../lib/booking';
@@ -30,7 +30,7 @@ export default function ProfilePage({ bookings, profile, onCancel, onRebook, onB
     <div style={{ paddingTop: `calc(${SAFE.top} + 16px)`, animation: 'fadeUp 0.3s ease' }}>
       <LargeTitle>{profile.name ? `Ciao, ${profile.name.split(' ')[0]}` : 'Profilo'}</LargeTitle>
 
-      <h2 style={{ fontSize: '20px', fontWeight: 700, margin: '8px 20px 12px' }}>I miei appuntamenti</h2>
+      <h2 style={{ ...HEADING, fontSize: '22px', margin: '8px 20px 12px' }}>I miei appuntamenti</h2>
       <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {upcoming.length === 0 && (
           <div style={{ ...card, textAlign: 'center' }}>
@@ -65,7 +65,7 @@ export default function ProfilePage({ bookings, profile, onCancel, onRebook, onB
 
       {past.length > 0 && (
         <>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, margin: '28px 20px 12px' }}>Storico</h2>
+          <h2 style={{ ...HEADING, fontSize: '22px', margin: '28px 20px 12px' }}>Storico</h2>
           <div style={{ margin: '0 20px', ...card, padding: '4px 16px' }}>
             {past.slice(0, 6).map((b, i) => (
               <div key={b.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', padding: '12px 0', borderTop: i ? `1px solid ${COLORS.border}` : 'none' }}>
@@ -82,7 +82,7 @@ export default function ProfilePage({ bookings, profile, onCancel, onRebook, onB
         </>
       )}
 
-      <h2 style={{ fontSize: '20px', fontWeight: 700, margin: '28px 20px 12px' }}>Il salone</h2>
+      <h2 style={{ ...HEADING, fontSize: '22px', margin: '28px 20px 12px' }}>Il salone</h2>
       <div style={{ margin: '0 20px', ...card, padding: '4px 16px' }}>
         <a href={mapsUrl()} target="_blank" rel="noreferrer" style={linkRow}><PinIcon size={20} color={COLORS.taupeDark} />{SALON.address}, {SALON.city}</a>
         <a href={`tel:${SALON.phone.replace(/\s/g, '')}`} style={{ ...linkRow, borderTop: `1px solid ${COLORS.border}` }}><PhoneIcon size={20} color={COLORS.taupeDark} />{SALON.phone}</a>

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { COLORS, RADIUS, SAFE, SHADOW } from '../config/theme';
+import { COLORS, HEADING, RADIUS, SAFE, SHADOW } from '../config/theme';
 import { SALON } from '../config/salon';
 import {
   eligibleStaff,
@@ -39,7 +39,7 @@ interface Props {
   onPickServices: () => void;
 }
 
-const sectionTitle = { fontSize: '20px', fontWeight: 700, letterSpacing: '-0.3px', margin: '24px 20px 12px' } as const;
+const sectionTitle = { ...HEADING, fontSize: '22px', margin: '24px 20px 12px' } as const;
 
 const inputStyle = {
   width: '100%',
@@ -153,7 +153,7 @@ export default function BookingPage({ serviceIds, draft, setDraft, bookings, pro
 
       {/* Giorno */}
       <h2 style={sectionTitle}>{monthLabel(selectedDay)}</h2>
-      <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '0 20px 4px', scrollSnapType: 'x proximity' }}>
+      <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '0 20px 4px', scrollSnapType: 'x proximity', scrollPaddingLeft: '20px' }}>
         {days.map((d) => {
           const iso = toISODate(d);
           const open = isOpen(d);

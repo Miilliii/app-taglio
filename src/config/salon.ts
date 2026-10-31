@@ -8,7 +8,7 @@ export interface OpeningDay {
 
 export const SALON = {
   name: 'TAGLIO',
-  tagline: 'Il tuo stile, a portata di tap',
+  tagline: 'La cura di ogni dettaglio, dal primo taglio',
   type: 'Barber & Parrucchiere',
   address: 'Via Roma 12',
   city: 'Milano',
@@ -30,7 +30,7 @@ export const SALON = {
   } as Record<number, OpeningDay | null>,
   promo: {
     title: '-20% il martedì',
-    text: 'Su tutti i servizi taglio e piega, ogni martedì.',
+    text: 'Su taglio e piega, ogni martedì, con lo stesso servizio di sempre.',
     weekday: 2,
     discount: 0.2,
   },

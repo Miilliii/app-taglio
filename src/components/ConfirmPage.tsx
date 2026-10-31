@@ -1,4 +1,4 @@
-import { COLORS, RADIUS, SAFE, SHADOW } from '../config/theme';
+import { COLORS, HEADING, RADIUS, SAFE, SHADOW } from '../config/theme';
 import { SALON } from '../config/salon';
 import { getStaff } from '../data/staff';
 import { downloadICS, formatDuration, formatLongDate, formatPrice, mapsUrl, servicesFromIds, type Booking } from '../lib/booking';
@@ -20,13 +20,13 @@ export default function ConfirmPage({ booking, onHome, onManage }: Props) {
       <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: COLORS.sandSoft, color: COLORS.taupeDark, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', animation: 'pop 0.5s ease' }}>
         <CheckIcon size={46} strokeWidth={2.6} />
       </div>
-      <h1 style={{ textAlign: 'center', fontSize: '28px', fontWeight: 700, letterSpacing: '-0.5px', margin: '22px 0 6px' }}>Prenotazione confermata!</h1>
+      <h1 style={{ ...HEADING, textAlign: 'center', fontSize: '29px', margin: '22px 0 6px' }}>Prenotazione confermata</h1>
       <p style={{ textAlign: 'center', color: COLORS.textSecondary, fontSize: '15px', margin: 0 }}>
         Ti aspettiamo, {booking.customerName.split(' ')[0]}.
       </p>
 
       <div style={{ marginTop: '24px', background: COLORS.sandSoft, borderRadius: RADIUS.lg, padding: '18px', boxShadow: SHADOW.card }}>
-        <div style={{ fontSize: '20px', fontWeight: 700 }}>{services.map((s) => s.name).join(' + ')}</div>
+        <div style={{ ...HEADING, fontSize: '22px' }}>{services.map((s) => s.name).join(' + ')}</div>
         <div style={{ fontSize: '17px', marginTop: '8px', lineHeight: 1.55 }}>
           <div>{formatLongDate(booking.date)} · {booking.time}</div>
           <div>con {staff?.name}</div>

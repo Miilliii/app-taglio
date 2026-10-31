@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { COLORS, RADIUS, SAFE } from '../config/theme';
+import { COLORS, GRADIENT, HEADING, RADIUS, SAFE } from '../config/theme';
 import { ChevronLeft, ScissorsIcon } from './Icons';
 
 // Immagine con fallback elegante color sabbia quando l'URL è vuoto
@@ -11,7 +11,7 @@ export const Photo = ({ src, alt, style, label }: { src: string; alt: string; st
       role="img"
       aria-label={alt}
       style={{
-        background: `linear-gradient(145deg, ${COLORS.sandSoft} 0%, ${COLORS.sand} 100%)`,
+        background: GRADIENT.sand,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -96,12 +96,12 @@ export const PageHeader = ({ title, onBack, right }: { title: string; onBack?: (
 );
 
 export const LargeTitle = ({ children }: { children: ReactNode }) => (
-  <h1 style={{ fontSize: '34px', fontWeight: 700, letterSpacing: '-0.6px', margin: '4px 20px 16px', lineHeight: 1.1 }}>{children}</h1>
+  <h1 style={{ ...HEADING, fontSize: '34px', margin: '4px 20px 16px', lineHeight: 1.15 }}>{children}</h1>
 );
 
 export const SectionTitle = ({ children, action }: { children: ReactNode; action?: ReactNode }) => (
   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', margin: '28px 20px 12px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0, letterSpacing: '-0.3px' }}>{children}</h2>
+    <h2 style={{ ...HEADING, fontSize: '22px', margin: 0 }}>{children}</h2>
     {action}
   </div>
 );
@@ -120,7 +120,7 @@ export const PrimaryButton = ({
   style?: CSSProperties;
 }) => {
   const variants: Record<string, CSSProperties> = {
-    dark: { background: COLORS.black, color: COLORS.white, border: 'none' },
+    dark: { background: GRADIENT.ink, color: COLORS.white, border: 'none' },
     taupe: { background: COLORS.taupe, color: COLORS.white, border: 'none' },
     outline: { background: COLORS.cardBg, color: COLORS.textPrimary, border: `1px solid ${COLORS.borderStrong}` },
   };
@@ -131,9 +131,10 @@ export const PrimaryButton = ({
       style={{
         width: '100%',
         minHeight: '54px',
-        borderRadius: RADIUS.pill,
-        fontSize: '17px',
+        borderRadius: RADIUS.md,
+        fontSize: '16px',
         fontWeight: 600,
+        letterSpacing: '0.2px',
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.4 : 1,
         transition: 'transform 0.12s ease, opacity 0.2s ease',
@@ -162,12 +163,11 @@ export const Chip = ({ label, active, onClick }: { label: string; active: boolea
       height: '38px',
       padding: '0 18px',
       borderRadius: RADIUS.pill,
-      border: 'none',
-      background: active ? COLORS.taupe : COLORS.cardBg,
+      border: `1px solid ${active ? COLORS.black : COLORS.border}`,
+      background: active ? COLORS.black : COLORS.cardBg,
       color: active ? COLORS.white : COLORS.textPrimary,
-      fontSize: '15px',
-      fontWeight: active ? 600 : 500,
-      boxShadow: active ? 'none' : '0 1px 3px rgba(17,17,17,0.06)',
+      fontSize: '14px',
+      fontWeight: 500,
       cursor: 'pointer',
       transition: 'all 0.2s ease',
     }}

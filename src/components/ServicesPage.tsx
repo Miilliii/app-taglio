@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { COLORS, NAV_HEIGHT, RADIUS, SAFE, SHADOW } from '../config/theme';
+import { COLORS, GRADIENT, NAV_HEIGHT, RADIUS, SAFE, SHADOW } from '../config/theme';
 import { CATEGORIES, SERVICES, type Category } from '../data/services';
 import { eligibleStaff, formatDuration, formatPrice, servicesFromIds, totalDuration } from '../lib/booking';
 import { CheckIcon, ChevronRight, CloseIcon, PlusIcon, SearchIcon } from './Icons';
@@ -46,7 +46,7 @@ export default function ServicesPage({ selected, onToggle, onContinue }: Props) 
           placeholder="Cerca un servizio"
           aria-label="Cerca un servizio"
           enterKeyHint="search"
-          style={{ width: '100%', height: '44px', borderRadius: RADIUS.md, border: 'none', background: COLORS.sand, padding: '0 40px 0 40px', color: COLORS.textPrimary, outline: 'none', fontSize: '16px' }}
+          style={{ width: '100%', height: '46px', borderRadius: RADIUS.md, border: `1px solid ${COLORS.border}`, background: COLORS.cardBg, padding: '0 40px 0 40px', color: COLORS.textPrimary, outline: 'none', fontSize: '16px' }}
         />
         {query && (
           <button onClick={() => setQuery('')} aria-label="Cancella ricerca" style={{ position: 'absolute', right: '6px', top: '50%', transform: 'translateY(-50%)', width: '32px', height: '32px', border: 'none', background: 'transparent', color: COLORS.taupeDark, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
@@ -86,7 +86,7 @@ export default function ServicesPage({ selected, onToggle, onContinue }: Props) 
                 textAlign: 'left',
                 padding: '10px',
                 borderRadius: RADIUS.lg,
-                border: `1px solid ${isSel ? COLORS.taupe : 'transparent'}`,
+                border: `1px solid ${isSel ? COLORS.taupe : COLORS.border}`,
                 background: isSel ? COLORS.sandLight : COLORS.cardBg,
                 boxShadow: SHADOW.card,
                 cursor: 'pointer',
@@ -94,16 +94,16 @@ export default function ServicesPage({ selected, onToggle, onContinue }: Props) 
                 transition: 'all 0.2s ease',
               }}
             >
-              <Photo src={s.image} alt={s.name} style={{ width: '72px', height: '72px', borderRadius: RADIUS.md, flexShrink: 0 }} />
+              <Photo src={s.image} alt={s.name} style={{ width: '88px', height: '88px', borderRadius: RADIUS.md, flexShrink: 0 }} />
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: '17px', fontWeight: 600 }}>{s.name}</div>
-                <div style={{ fontSize: '14px', color: COLORS.textSecondary, marginTop: '2px' }}>{formatDuration(s.duration)}</div>
-                <div style={{ fontSize: '13px', color: COLORS.textMuted, marginTop: '3px', lineHeight: 1.3, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                <div style={{ fontSize: '16px', fontWeight: 600 }}>{s.name}</div>
+                <div style={{ fontSize: '13px', color: COLORS.taupeDark, marginTop: '2px' }}>{formatDuration(s.duration)}</div>
+                <div style={{ fontSize: '13px', color: COLORS.textSecondary, marginTop: '3px', lineHeight: 1.35, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                   {s.description}
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px', flexShrink: 0 }}>
-                <span style={{ fontSize: '17px', fontWeight: 600 }}>{formatPrice(s.price)}</span>
+                <span style={{ fontSize: '16px', fontWeight: 600 }}>{formatPrice(s.price)}</span>
                 <span
                   style={{
                     width: '30px',
@@ -152,15 +152,15 @@ export default function ServicesPage({ selected, onToggle, onContinue }: Props) 
             height: '58px',
             borderRadius: RADIUS.lg,
             border: 'none',
-            background: COLORS.sand,
+            background: GRADIENT.ink,
             boxShadow: SHADOW.float,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0 18px',
-            fontSize: '16px',
+            fontSize: '15px',
             fontWeight: 600,
-            color: COLORS.textPrimary,
+            color: COLORS.white,
             cursor: 'pointer',
             zIndex: 110,
             animation: 'fadeUp 0.25s ease',
